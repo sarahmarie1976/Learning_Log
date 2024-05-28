@@ -1,0 +1,123 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+*.sqlite3-journal
+
+# If you're using PyCharm:
+.idea/
+
+# If you're using Visual Studio Code:
+.vscode/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environment
+venv/
+ENV/
+env/
+env.bak/
+ll_env/
+
+# macOS stuff
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.idea/
+
+# pyenv
+.python-version
+
+# mypy
+.mypy_cache/
+
+# Environments
+.env
+.venv
+ENV/
+env.bak/
+venv.bak/
+
+# pytest
+.cache/
+__pycache__/
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# SQL
+*.sql
+
+# Translations
+*.mo
+*.pot
+
+# C extensions
+*.so
+
+# Static files
+staticfiles/
+
+# Media files
+media/
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Sentry files
+.sentrycli
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
