@@ -20,6 +20,7 @@ from django.urls import path, include  # Add include here
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('accounts.urls')),
     path('', include('learning_logs.urls')),  # This line includes the URLs from your learning_logs app
 ]
 
