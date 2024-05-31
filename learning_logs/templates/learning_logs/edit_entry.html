@@ -1,15 +1,32 @@
 {% extends "learning_logs/base.html" %}
 
 {% block content %}
+  <style>
+    .custom-container {
+      width: 75%; /* Set the width to 75% */
+      margin: 0 auto; /* Center the content */
+      background-color: transparent; /* Transparent background */
+      color: #6c757d; /* Set text color to secondary */
+    }
 
-  <p><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a></p>
+    .custom-button-margin {
+      margin-top: 15px;
+    }
 
-  <p>Edit entry:</p>
+    .custom-padding {
+      padding: 20px;
+    }
+  </style>
 
-  <form action="{% url 'learning_logs:edit_entry' entry.id %}" method='post'>
-    {% csrf_token %}
-    {{ form.as_div }}
-    <button name="submit">Save changes</button>
-  </form>
+  <div class="custom-container custom-padding">
+    <p><a href="{% url 'learning_logs:topic' topic.id %}" class="text-info">{{ topic }}</a></p>
+    
+    <p class="text-info">Edit entry:</p>
 
+    <form action="{% url 'learning_logs:edit_entry' entry.id %}" method='post'>
+      {% csrf_token %}
+      {{ form.as_div }}
+      <button name="submit" class="btn btn-info  custom-button-margin">Save changes</button>
+    </form>
+  </div>
 {% endblock content %}

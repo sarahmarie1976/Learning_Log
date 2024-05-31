@@ -1,12 +1,42 @@
-{% extends "learning_logs/base.html" %}
+{% extends 'learning_logs/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+  <div class="text-center custom-margin-bottom">
+    <h2 class="text-info">Register for an account</h2>
+  </div>
+{% endblock page_header %}
 
 {% block content %}
+  <style>
+    .custom-margin-top {
+      margin-top: 50px;
+    }
 
-  <form action="{% url 'accounts:register' %}" method='post'>
-    {% csrf_token %}
-    {{ form.as_div }}
+    .custom-margin-bottom {
+      margin-bottom: 20px;
+    }
 
-    <button name="submit">Register</button>
-  </form>
+    .custom-padding {
+      padding: 20px;
+      background-color: #181818;
+      border-radius: 5px;
+    }
 
+    .custom-button-margin {
+      margin-top: 15px;
+    }
+
+  </style>
+
+  <div class="d-flex justify-content-center custom-margin-top">
+    <div class="col-12 col-md-6 col-lg-4">
+      <form action="{% url 'accounts:register' %}" method='post' class="text-secondary 
+      custom-padding">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button type="submit" class="btn btn-info w-100 custom-button-margin">Register</button>
+      </form>
+    </div>
+  </div>
 {% endblock content %}

@@ -1,12 +1,30 @@
 {% extends "learning_logs/base.html" %}
 
 {% block content %}
-  <p>Add a new topic:</p>
+  <style>
+    .custom-container {
+      width: 75%; /* Set the width to 75% */
+      margin: 0 auto; /* Center the content */
+      background-color: transparent; /* Transparent background */
+      color: #6c757d; /* Set text color to secondary */
+    }
 
-  <form action="{% url 'learning_logs:new_topic' %}" method='post'>
-    {% csrf_token %}
-    {{ form.as_div }}
-    <button name="submit">Add topic</button>
-  </form>
+    .custom-button-margin {
+      margin-top: 15px;
+    }
 
+    .custom-padding {
+      padding: 20px;
+    }
+  </style>
+
+  <div class="custom-container custom-padding text-center">
+    <p class="text-info">Add a new topic:</p>
+
+    <form action="{% url 'learning_logs:new_topic' %}" method='post'>
+      {% csrf_token %}
+      {{ form.as_div }}
+      <button name="submit" class="btn btn-info custom-button-margin">Add topic</button>
+    </form>
+  </div>
 {% endblock content %}

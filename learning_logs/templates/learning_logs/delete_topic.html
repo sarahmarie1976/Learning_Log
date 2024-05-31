@@ -18,18 +18,14 @@
     }
   </style>
 
-  <div class="custom-container custom-padding">
-    <p class="text-info">
-      <a href="{% url 'learning_logs:topic' topic.id %}" class="text-info">
-        {{ topic }}
-      </a>
-    </p>
+  <div class="custom-container custom-padding text-center">
+    <p class="text-secondary">Are you sure you want to delete this topic?</p>
+    <p class="text-secondary">{{ topic.text }}</p>
 
-    <p class="text-info">Add a New Entry:</p>
-    <form action="{% url 'learning_logs:new_entry' topic.id %}" method="post">
+    <form action="{% url 'learning_logs:delete_topic' topic.id %}" method="post">
       {% csrf_token %}
-      {{ form.as_div }}
-      <button name="submit" class="btn btn-info custom-button-margin">Add Entry</button>
+      <button type="submit" class="btn btn-danger custom-button-margin">Delete</button>
+      <a href="{% url 'learning_logs:topics' %}" class="btn btn-secondary custom-button-margin">Cancel</a>
     </form>
   </div>
 {% endblock content %}

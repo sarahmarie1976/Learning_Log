@@ -1,30 +1,56 @@
 {% extends 'learning_logs/base.html' %}
 
+{% block page_header %}
+  <h1 class="text-center text-info">{{ topic.text }}</h1>
+{% endblock page_header %}
+
 {% block content %}
+  <style>
+    .custom-container {
+      width: 75%; /* Set the width to 75% */
+      margin: 0 auto; /* Center the content */
+    }
 
-  <p>Topic: {{ topic.text }}</p>
+    .delete-button {
+      color: #dc3545; /* Red color for delete button */
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
 
-  <p>Entries:</p>
-  <p>
-    <a href="{% url 'learning_logs:new_entry' topic.id %}">Add New Entry</a>
-  </p>
+    .delete-button:hover {
+      color: #ff0000; /* Darker red on hover */
+    }
 
-  <ul>
+    .delete-form {
+      display: inline-block;
+      margin-left: 10px; /* Add some spacing between the edit and delete buttons */
+    }
+  </style>
+
+  <div class="custom-container">
+    <p>
+      <a href="{% url 'learning_logs:new_entry' topic.id %}">Add new entry</a>
+    </p>
+
     {% for entry in entries %}
-      <li>
-        <p> {{ entry.date_added|date:'M d, Y H:i' }} </p>
-        <p> {{ entry.text|linebreaks }} </p>
-        <p>
-          <a href="{% url 'learning_logs:edit_entry' entry.id %}">
-            Edit Entry
-          </a>
-        </p>
-      </li>
+      <div class="card mb-3 bg-dark">
+        <!-- Card header with timestamp, edit link, and delete button -->
+        <h4 class="card-header bg-dark text-info d-flex justify-content-between align-items-center">
+          <span>{{ entry.date_added|date:'M d, Y H:i' }}</span>
+          <span>
+            <a href="{% url 'learning_logs:edit_entry' entry.id %}" class="text-info">edit entry</a>
+            <form action="{% url 'learning_logs:delete_entry' entry.id %}" method="post" class="delete-form">
+              {% csrf_token %}
+              <button type="submit" class="delete-button">&times;</button>
+            </form>
+          </span>
+        </h4>
+        <!-- Card body with entry text -->
+        <div class="card-body bg-dark text-secondary">{{ entry.text|linebreaks }}</div>
+      </div>
     {% empty %}
-      <li>There are no entries for this topic yet.</li>
+      <p>There are no entries for this topic yet.</p>
     {% endfor %}
-  </ul>
-
-  
-
+  </div>
 {% endblock content %}
