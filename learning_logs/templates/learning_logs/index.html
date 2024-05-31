@@ -1,9 +1,28 @@
 {% extends 'learning_logs/base.html' %}
 
-{% block content %}
-<p>
-  Learning Log helps you keep track of your learning, 
-  for any topic you're interested in.
-</p>
+{% block page_header %}
+  <style>
+    .custom-container {
+      width: 75%; /* Set the width to half */
+      margin: 0 auto; /* Center the content */
+    }
+  </style>
 
-{% endblock content %}
+  <div class="p-3 mb-4 bg-transparent border border-secondary rounded-3 custom-container">
+    <div class="container-fluid py-4">
+      <h1 class="display-3 text-info text-center">Track your learning.</h1>
+      <p class="lead">
+        Create your very own Learning Log to keep track of 
+        all the topics you're exploring. This is your personal 
+        space to document and reflect on your learning journey. 
+        Every time you dive into a new subject or gain new insights, 
+        add an entry to summarize what you've discovered. Not only 
+        will this help you organize your thoughts, but it will also 
+        provide a valuable record of your progress over time. Use your 
+        Learning Log to revisit past learnings, track your growth, and 
+        stay motivated as you continue to expand your knowledge.
+      </p>
+      <a class="btn btn-info btn-lg mt-1" href="{% url 'accounts:register' %}">Register &raquo;</a>
+    </div>
+  </div>
+{% endblock page_header %}

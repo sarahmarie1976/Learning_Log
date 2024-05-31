@@ -1,19 +1,65 @@
 {% extends 'learning_logs/base.html' %}
 
+{% block page_header %}
+  <h1 class="text-info text-center">Topics</h1>
+{% endblock page_header %}
+
 {% block content %}
+  <style>
+    .custom-container {
+      width: 50%; /* Set the width to 75% */
+      margin: 0 auto; /* Center the content */
+    }
 
-  <p>Topics</p>
-  <ul>
-    {% for topic in topics %}
-      <li>
-        <a href="{% url 'learning_logs:topic' topic.id %}">
-          {{ topic.text }}</a>
-      </li>
-    {% empty %}
-      <li>No topics have been added yet.</li>
-    {% endfor %}
-  </ul>
+    .delete-button {
+      color: #dc3545; /* Red color for delete button */
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
 
-  <a href="{% url 'learning_logs:new_topic' %}">Add a new topic</a>
+    .delete-button:hover {
+      color: #ff0000; /* Darker red on hover */
+    }
 
+    .delete-form {
+      display: inline-block;
+      margin: 0; /* Remove margin to bring it closer to the text */
+    }
+
+    .list-group-item {
+      display: flex;
+      justify-content: space-between; /* Ensure items are evenly spaced */
+      align-items: center;
+      padding: 10px 15px; /* Adjust padding for a more compact look */
+    }
+
+    .topic-link {
+      flex-grow: 1;
+      text-align: left;
+      margin-right: 10px; /* Add some space between the text and the button */
+    }
+  </style>
+
+  <div class="custom-container">
+    <ul class="list-group border-bottom pb-2 mb-4">
+      {% for topic in topics %}
+        <li class="list-group-item border-0 bg-dark text-secondary">
+          <a href="{% url 'learning_logs:topic' topic.id %}" class="text-secondary topic-link">
+            {{ topic.text }}
+          </a>
+          <form action="{% url 'learning_logs:delete_topic' topic.id %}" method="post" class="delete-form">
+            {% csrf_token %}
+            <button type="submit" class="delete-button">&times;</button>
+          </form>
+        </li>
+      {% empty %}
+        <li class="list-group-item border-0">No topics have been added yet.</li>
+      {% endfor %}
+    </ul>
+
+    <div class="text-center">
+      <a href="{% url 'learning_logs:new_topic' %}" class="btn btn-info">Add a new topic</a>
+    </div>
+  </div>
 {% endblock content %}
